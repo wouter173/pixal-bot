@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const commands = require("../commands.js").getCommands()
+const commands = require("../utils/commands.js").getCommands()
 const config = require("../config.json")
 
 module.exports.run = (msg, args) => {
