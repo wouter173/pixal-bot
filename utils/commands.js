@@ -3,7 +3,7 @@ const fs = require("fs");
 module.exports.getCommands = () => {
   let commands = [];
 
-  fs.readdirSync("./commands").forEach(file => {
+  fs.readdirSync("./commands").forEach((file) => {
     commands.push(file.split(".")[0]);
   });
 
@@ -13,7 +13,7 @@ module.exports.getCommands = () => {
 module.exports.getCommandFiles = () => {
   let commands = [];
 
-  fs.readdirSync("./commands").forEach(file => {
+  fs.readdirSync("./commands").forEach((file) => {
     commands.push(file);
   });
 
