@@ -1,21 +1,21 @@
 const fs = require("fs");
 
 module.exports.getCommands = () => {
-  let commands = [];
+	let commands = [];
 
-  fs.readdirSync("./commands").forEach((file) => {
-    commands.push(file.split(".")[0]);
-  });
+	fs.readdirSync("./commands").forEach((file) => {
+		commands.push(file.split(".")[0]);
+	});
 
-  return commands;
-}
+	return commands;
+};
 
 module.exports.getCommandFiles = () => {
-  let commands = [];
+	let commands = [];
 
-  fs.readdirSync("./commands").forEach((file) => {
-    commands.push(file);
-  });
+	fs.readdirSync("./commands").forEach((file) => {
+		commands.push(file);
+	});
 
-  return commands;
-}
+	return commands;
+};
