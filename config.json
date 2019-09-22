@@ -1,3 +1,23 @@
 {
-  "prefix": "!"
+  "prefix": "!",
+  "possibilities": [
+    "Yes",
+    "Definitely",
+    "Ofcourse",
+    "For sure",
+    "Totally",
+    "Without a doubt",
+    "Maybe",
+    "I don't know",
+    "I have no idea",
+    "I do not know how to answer that question",
+    "Yes and no?",
+    "Ask that again please",
+    "No",
+    "Definitely not",
+    "Most certainly not",
+    "Not at all",
+    "Are you out of your mind?",
+    "Never"
+  ]
 }
