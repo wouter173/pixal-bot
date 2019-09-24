@@ -11,8 +11,8 @@ Client.on("message", (msg) => {
 	const args = msg.content.toLowerCase().split(" ");
 	const cmdRaw = args.shift();
 
-	if (!cmdRaw.startsWith(config.prefix)) { return; }
 	if (msg.author.bot) { return; }
+	if (!cmdRaw.startsWith(config.prefix)) { return; }
 
 	const cmd = cmdRaw.split(config.prefix)[1];
 

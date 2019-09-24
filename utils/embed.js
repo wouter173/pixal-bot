@@ -11,8 +11,8 @@ module.exports.generator = (color, title, description, author) => {
 	return embed;
 };
 
-module.exports.noPerms = (permision, author) => {
-	return this.generator("fc6b03", "No Permision", permision, author);
+module.exports.noPerms = (permision, description, author) => {
+	return this.generator("fc6b03", "No Permision", `**${permision}** \nUsed to: ${description}`, author);
 };
 
 module.exports.error = (error, author) => {
