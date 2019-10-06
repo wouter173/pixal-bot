@@ -1,4 +1,4 @@
-const { noPerms } = require("./embed.js");
+const { noPerms } = require("./class/Embed");
 
 const existsChannel = async(guild, name, type) => {
 	const channel = guild.channels.find((channel) => channel.name === name && channel.type === type);

@@ -1,10 +1,18 @@
 const Discord = require("discord.js");
-const commands = require("./utils/commands.js").getCommands();
-const config = require("./config.json");
+const config = require("./config");
+
+const commands = require("./utils/CommandManager").commands;
 const Client = new Discord.Client();
 
 Client.on("ready", () => {
 	console.log("ready.");
+	Client.user.setPresence({
+		status: "idle",
+		game: {
+			type: "WATCHING",
+			name: "Commands"
+		}
+	});
 });
 
 Client.on("message", (msg) => {
@@ -15,9 +23,9 @@ Client.on("message", (msg) => {
 	if (!cmdRaw.startsWith(config.prefix)) { return; }
 
 	const cmd = cmdRaw.split(config.prefix)[1];
-
+	
 	for (let i = 0; i < commands.length; i++) {
-		if (cmd == commands[i]) { require(`./commands/${commands[i]}.js`).run(msg, args); }
+		if (cmd == commands[i].name) { commands[i].run(msg, args); }
 	}
 });
 

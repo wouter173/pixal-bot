@@ -1,20 +1,24 @@
-const commands = require("../utils/commands.js").getCommands();
-const config = require("../config.json");
-const { roleColor } = require("../utils/color.js");
-const { generator } = require("../utils/embed.js");
+const Command = require("../utils/class/Command");
+const config = require("../config");
+const { roleColor } = require("../utils/color");
+const { generator } = require("../utils/class/embed");
 
-module.exports.run = (msg) => {
-	const embed = generator(roleColor(msg), "HELP MENU", "", msg.author);
 
-	commands.forEach(command => {
-		let data = require(`./${command}.js`).data;
-		embed.addField(data.usage, `${data.description}`, true);
-	});
+module.exports = class help extends Command {
 
-	msg.channel.send(embed);
-};
+	constructor() {
+		super("help", "Help command.", `${config.prefix}help`);
+		this.commands = [];
+	}
 
-module.exports.data = {
-	description: "Help command.",
-	usage: `${config.prefix}help`
+	run(msg) {
+		if (this.commands.length == 0) { this.commands = require("../utils/CommandManager").commands; }
+		const embed = generator(roleColor(msg), "HELP MENU", "", msg.author);
+
+		this.commands.forEach((command) => {
+			embed.addField(command.usage, `${command.description}`, true);
+		});
+
+		msg.channel.send(embed);
+	}
 };

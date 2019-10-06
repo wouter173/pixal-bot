@@ -1,21 +1,26 @@
-const config = require("../config.json");
-const { generator, error } = require("../utils/embed.js");
-const { roleColor } = require("../utils/color.js");
+const config = require("../config");
+const Command = require("../utils/class/Command");
+const { generator, error } = require("../utils/class/Embed");
+const { roleColor } = require("../utils/color");
 
-module.exports.run = (msg, args) => {
-	if (!args[0]) {
-		return msg.channel.send(error("No question specified.", msg.author));
+module.exports = class ball extends Command {
+
+	constructor() {
+		super("8ball", "Shake the 8ball.", `${config.prefix}8ball <question>`);
 	}
-	const possibilities = config.possibilities;
-	let question = args.join(" ");
-	if (question[question.length - 1] !== "?") { question += "?"; }
 
-	const answer = possibilities[Math.floor(Math.random() * possibilities.length)];
-	const desc = `**${msg.member.displayName}** asked: **${question}**\n\n:8ball: **${answer}**`;
-	msg.channel.send(generator(roleColor(msg), "8ball", desc, msg.author));
-};
+	run(msg, args) {
 
-module.exports.data = {
-	description: "Shake the 8ball.",
-	usage: `${config.prefix}8ball <question>`
+		if (!args[0]) {
+			return msg.channel.send(error("No question specified.", msg.author));
+		}
+
+		const possibilities = config.possibilities;
+		let question = args.join(" ");
+		if (question[question.length - 1] !== "?") { question += "?"; }
+
+		const answer = possibilities[Math.floor(Math.random() * possibilities.length)];
+		const desc = `**${msg.member.displayName}** asked: **${question}**\n\n:8ball: **${answer}**`;
+		msg.channel.send(generator(roleColor(msg), "8ball", desc, msg.author));
+	}
 };
