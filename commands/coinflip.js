@@ -1,7 +1,7 @@
 const config = require("../config");
 const Command = require("../utils/class/Command");
+const Embed = require("../utils/class/Embed");
 const { roleColor } = require("../utils/color");
-const { generator } = require("../utils/class/Embed");
 
 module.exports = class coinflip extends Command {
 	constructor() {
@@ -10,6 +10,6 @@ module.exports = class coinflip extends Command {
 
 	run(msg) {
 		const coin = Math.random(2) > 0.5 ? ":white_circle: The coin flipped heads!" : ":black_circle: The coin flipped tails!";
-		msg.channel.send(generator(roleColor(msg), "Flipping a coin!", coin, msg.author));
+		msg.channel.send(new Embed(roleColor(msg), "Flipping a coin!", coin, msg.author));
 	}
 };

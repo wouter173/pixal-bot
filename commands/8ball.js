@@ -1,6 +1,7 @@
 const config = require("../config");
 const Command = require("../utils/class/Command");
-const { generator, error } = require("../utils/class/Embed");
+const Embed = require("../utils/class/Embed");
+const Error = require("../utils/class/Error");
 const { roleColor } = require("../utils/color");
 
 module.exports = class ball extends Command {
@@ -12,7 +13,7 @@ module.exports = class ball extends Command {
 	run(msg, args) {
 
 		if (!args[0]) {
-			return msg.channel.send(error("No question specified.", msg.author));
+			return msg.channel.send(new Error("No question specified.", msg.author));
 		}
 
 		const possibilities = config.possibilities;
@@ -21,6 +22,6 @@ module.exports = class ball extends Command {
 
 		const answer = possibilities[Math.floor(Math.random() * possibilities.length)];
 		const desc = `**${msg.member.displayName}** asked: **${question}**\n\n:8ball: **${answer}**`;
-		msg.channel.send(generator(roleColor(msg), "8ball", desc, msg.author));
+		msg.channel.send(new Embed(roleColor(msg), "8ball", desc, msg.author));
 	}
 };

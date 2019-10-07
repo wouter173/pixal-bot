@@ -1,7 +1,7 @@
 const config = require("../config");
 const Command = require("../utils/class/Command");
+const Embed = require("../utils/class/Embed");
 const { roleColor } = require("../utils/color");
-const { generator } = require("../utils/class/embed");
 
 module.exports = class source extends Command {
 
@@ -15,7 +15,7 @@ module.exports = class source extends Command {
 			"<:website:630087079208157228> [Wouter173](https://wouter173.nl), the mastermind."
 		];
 
-		const embed = generator(roleColor(msg), "Source", links.join("\n\n"), msg.author);
+		const embed = new Embed(roleColor(msg), "Source", links.join("\n\n"), msg.author);
 		msg.channel.send(embed);
 	}
 };
