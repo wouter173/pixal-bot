@@ -1,13 +1,14 @@
 const Command = require("../utils/class/Command");
-// const Embed = require("../utils/class/Embed");
-const Error = require("../utils/class/Error");
+const Success = require("../utils/class/Success");
+const {get} = require("../utils/models/Settings");
 
 module.exports = class debug extends Command {
 	constructor() {
 		super("debug", "debug", "debug");
 	}
 
-	run(msg) {
-		msg.channel.send(new Error("blabla", msg.author));
+	async run(msg) {
+		const temp = await get(msg.guild.id);
+		msg.channel.send(new Success(`${temp}`, msg.author));
 	}
 };

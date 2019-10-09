@@ -1,4 +1,3 @@
-const config = require("../config");
 const Command = require("../utils/class/Command");
 const Success = require("../utils/class/Success");
 const Error = require("../utils/class/Error");
@@ -8,7 +7,7 @@ const { modlog } = require("../utils/logs");
 module.exports = class ban extends Command {
 
 	constructor() {
-		super("ban", "Ban a user from your server.", `${config.prefix}ban <@user> [reason]`);
+		super("ban", "Ban a user from your server.", "ban <@user> [reason]");
 	}
 
 	run(msg, args) {

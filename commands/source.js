@@ -1,4 +1,3 @@
-const config = require("../config");
 const Command = require("../utils/class/Command");
 const Embed = require("../utils/class/Embed");
 const { roleColor } = require("../utils/color");
@@ -6,7 +5,7 @@ const { roleColor } = require("../utils/color");
 module.exports = class source extends Command {
 
 	constructor() {
-		super("source", "Get the source of this bot.", `${config.prefix}source`);
+		super("source", "Get the source of this bot.", "source");
 	}
 
 	run(msg) {

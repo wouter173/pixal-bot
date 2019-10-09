@@ -7,7 +7,7 @@ const { roleColor } = require("../utils/color");
 module.exports = class ball extends Command {
 
 	constructor() {
-		super("8ball", "Shake the 8ball.", `${config.prefix}8ball <question>`);
+		super("8ball", "Shake the 8ball.", "8ball <question>");
 	}
 
 	run(msg, args) {

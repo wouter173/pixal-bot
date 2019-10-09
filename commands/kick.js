@@ -1,4 +1,3 @@
-const config = require("../config");
 const Command = require("../utils/class/Command");
 const Success = require("../utils/class/Success");
 const Error = require("../utils/class/Error");
@@ -8,7 +7,7 @@ const { modlog } = require("../utils/logs");
 module.exports = class kick extends Command {
 
 	constructor() {
-		super("kick", "Kick a user from your server.", `${config.prefix}kick <@user> [reason]`);
+		super("kick", "Kick a user from your server.", "kick <@user> [reason]");
 	}
 
 	run(msg, args) {

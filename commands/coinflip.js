@@ -1,11 +1,10 @@
-const config = require("../config");
 const Command = require("../utils/class/Command");
 const Embed = require("../utils/class/Embed");
 const { roleColor } = require("../utils/color");
 
 module.exports = class coinflip extends Command {
 	constructor() {
-		super("coinflip", "Flip a coin.", `${config.prefix}coinflip`);
+		super("coinflip", "Flip a coin.", "coinflip");
 	}
 
 	run(msg) {
